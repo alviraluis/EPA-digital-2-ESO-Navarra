@@ -108,6 +108,14 @@ a {
   padding: 40px 0;
 }
 
+.section-band {
+  padding: 28px 26px;
+  border: 1px solid rgba(217, 220, 228, 0.92);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 249, 252, 0.96) 100%);
+  box-shadow: var(--shadow);
+}
+
 .hero {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -149,7 +157,8 @@ h2 {
 .pillar-card p,
 .panel-card p,
 .canvas-card p,
-.about-card p,
+.context-card p,
+.section-note span,
 blockquote {
   color: var(--muted);
   line-height: 1.7;
@@ -233,7 +242,8 @@ blockquote {
 .summary-card,
 .panel-card,
 .canvas-card,
-.about-card {
+.context-card,
+.section-note {
   border: 1px solid rgba(217, 220, 228, 0.92);
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.92);
@@ -316,24 +326,46 @@ blockquote {
   padding-top: 18px;
 }
 
+.context-grid,
 .pillars,
 .resource-grid,
-.about-grid,
 .canvas-grid {
   display: grid;
   gap: 18px;
 }
 
-.pillars {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+.context-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.context-card,
 .pillar-card,
 .summary-card,
 .panel-card,
-.about-card,
-.canvas-card {
+.canvas-card,
+.section-note {
   padding: 22px;
+}
+
+.context-card.accent {
+  background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(255,238,245,1) 100%);
+}
+
+.context-card.note {
+  background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(235,243,255,1) 100%);
+}
+
+.section-note {
+  max-width: 320px;
+}
+
+.section-note strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.pillars {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .mode-switch,
@@ -467,6 +499,7 @@ blockquote {
 
 .canvas-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 18px;
 }
 
 .canvas-card {
@@ -481,14 +514,6 @@ blockquote {
 
 .canvas-card.dimmed {
   opacity: 0.55;
-}
-
-.about-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.about-card.accent {
-  background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(255,238,245,1) 100%);
 }
 
 .footer {
@@ -506,7 +531,7 @@ blockquote {
   .pillars,
   .resource-grid,
   .canvas-grid,
-  .about-grid {
+  .context-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -547,7 +572,8 @@ blockquote {
   }
 
   h1,
-  h2 {
+  h2,
+  .section-note {
     max-width: 100%;
   }
 
@@ -556,7 +582,7 @@ blockquote {
   .dashboard-layout,
   .resource-grid,
   .canvas-grid,
-  .about-grid,
+  .context-grid,
   .hero-preview {
     grid-template-columns: 1fr;
   }
