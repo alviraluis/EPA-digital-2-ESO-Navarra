@@ -142,93 +142,48 @@
           <div class="section-heading split compact">
             <div>
               <p class="eyebrow">Demo principal</p>
-              <h2>Esto es lo que vería el alumno y con lo que podría interactuar.</h2>
-              <p>Esta es la parte central de la beta: una maqueta visual de cómo podría verse su EPA digital.</p>
+              <h2>La parte interactiva se abre en una ventana que imita un aula virtual de instituto.</h2>
+              <p>Así la página principal queda limpia y la experiencia del alumno se concentra en un acceso tipo portal escolar.</p>
             </div>
-            <div class="mode-switch" aria-label="Cambiar perfil de ejemplo">
-              <button class="mode-chip active" data-mode="claro">Perfil claro</button>
-              <button class="mode-chip" data-mode="creativo">Perfil creativo</button>
-              <button class="mode-chip" data-mode="ordenado">Perfil ordenado</button>
-            </div>
+            <button class="primary-button" id="open-classroom">Entrar en modo alumno</button>
           </div>
 
-          <div class="dashboard-layout">
-            <article class="summary-card">
-              <div class="summary-topline">
-                <span class="mini-tag" id="mode-tag">Perfil claro</span>
-                <span class="signal" id="mode-signal">Uso equilibrado</span>
-              </div>
-              <h3>Así se vería el EPA digital de un estudiante</h3>
-              <p id="mode-description">
-                Un entorno sencillo, con pocas herramientas, archivos ordenados y criterios básicos de seguridad y bienestar.
-              </p>
-              <div class="metric-row">
+          <div class="demo-launch-layout">
+            <article class="launch-card">
+              <span class="mini-tag">Acceso de demostración</span>
+              <h3>Abre la ventana emergente y prueba el recorrido del alumno</h3>
+              <p>La ventana mostrará primero una pantalla de acceso y, tras el login, enseñará el dashboard beta del EPA digital.</p>
+              <div class="login-credentials">
                 <div>
-                  <span>Organización</span>
-                  <strong id="metric-organization">82%</strong>
+                  <span>Usuario</span>
+                  <strong>innovación_bajabapec</strong>
                 </div>
                 <div>
-                  <span>Creación</span>
-                  <strong id="metric-creation">68%</strong>
-                </div>
-                <div>
-                  <span>Seguridad</span>
-                  <strong id="metric-safety">79%</strong>
+                  <span>Contraseña</span>
+                  <strong>12345</strong>
                 </div>
               </div>
+              <button class="secondary-button" id="open-classroom-secondary">Abrir ventana demo</button>
             </article>
 
-            <article class="panel-card">
-              <div class="panel-head">
-                <h3>Herramientas prioritarias</h3>
-                <span>Selección visual</span>
+            <article class="portal-preview">
+              <div class="portal-preview-top">
+                <span class="portal-dot"></span>
+                <span class="portal-dot"></span>
+                <span class="portal-dot"></span>
               </div>
-              <div class="tool-pills" id="tool-pills"></div>
-            </article>
-
-            <article class="panel-card">
-              <div class="panel-head">
-                <h3>Archivos y carpetas</h3>
-                <span>Orden básico</span>
+              <div class="portal-preview-body">
+                <div class="portal-preview-sidebar"></div>
+                <div class="portal-preview-content">
+                  <div class="portal-preview-header"></div>
+                  <div class="portal-preview-grid">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
               </div>
-              <div class="folder-tabs">
-                <button class="folder-chip active" data-folder="clase">Clase</button>
-                <button class="folder-chip" data-folder="proyecto">Proyecto</button>
-                <button class="folder-chip" data-folder="entregas">Entregas</button>
-              </div>
-              <div class="folder-preview" id="folder-preview"></div>
-            </article>
-
-            <article class="panel-card wide-card">
-              <div class="panel-head">
-                <h3>Recursos guardados</h3>
-                <span>Filtrar para entender mejor</span>
-              </div>
-              <div class="filter-row">
-                <button class="filter-chip active" data-filter="todos">Todos</button>
-                <button class="filter-chip" data-filter="fuente">Fuentes</button>
-                <button class="filter-chip" data-filter="tutorial">Tutoriales</button>
-                <button class="filter-chip" data-filter="ejemplo">Ejemplos</button>
-              </div>
-              <div class="resource-grid" id="resource-grid"></div>
-            </article>
-
-            <article class="panel-card">
-              <div class="panel-head">
-                <h3>Reflexión del alumno</h3>
-                <span>Meta breve</span>
-              </div>
-              <blockquote id="reflection-text">
-                Ya sé dónde guardar mis tareas, pero todavía tengo que mejorar cómo nombro archivos y cómo filtro la información.
-              </blockquote>
-            </article>
-
-            <article class="panel-card">
-              <div class="panel-head">
-                <h3>Seguridad y bienestar</h3>
-                <span>Checklist</span>
-              </div>
-              <ul class="check-list" id="check-list"></ul>
             </article>
           </div>
         </section>
@@ -277,6 +232,152 @@
         <p><strong>Mi EPA digital</strong> · Beta demostrativa complementaria de un proyecto de innovación educativa.</p>
         <p>Recurso secundario de apoyo visual para 2.º de ESO · Tecnología y Digitalización.</p>
       </footer>
+    </div>
+
+    <div class="modal-shell" id="classroom-modal" aria-hidden="true">
+      <div class="modal-backdrop" data-close-modal></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="classroom-title">
+        <button class="modal-close" type="button" data-close-modal aria-label="Cerrar ventana demo">×</button>
+
+        <section class="classroom-login" id="classroom-login-view">
+          <div class="classroom-branding">
+            <img src="assets/logo-ui1.png" alt="Universidad Isabel I" class="classroom-logo" />
+            <div>
+              <strong>Espacio de aula demo</strong>
+              <p>Acceso de demostración para visualizar el EPA digital del alumno.</p>
+            </div>
+          </div>
+
+          <div class="classroom-login-panel">
+            <p class="eyebrow">Acceso</p>
+            <h2 id="classroom-title">Entrar en el entorno del alumno</h2>
+            <p>Introduce las credenciales de prueba para abrir la demo beta.</p>
+            <form id="classroom-login-form" class="login-form">
+              <label>
+                <span>Usuario</span>
+                <input id="demo-username" name="username" type="text" autocomplete="username" placeholder="innovación_bajabapec" />
+              </label>
+              <label>
+                <span>Contraseña</span>
+                <input id="demo-password" name="password" type="password" autocomplete="current-password" placeholder="12345" />
+              </label>
+              <button class="primary-button" type="submit">Acceder</button>
+              <p class="login-help">Usuario: <strong>innovación_bajabapec</strong> · Contraseña: <strong>12345</strong></p>
+              <p class="login-error" id="login-error" hidden>Las credenciales no coinciden con el acceso de demostración.</p>
+            </form>
+          </div>
+        </section>
+
+        <section class="classroom-app" id="classroom-app-view" hidden>
+          <aside class="classroom-sidebar">
+            <div>
+              <p class="eyebrow">Aula demo</p>
+              <h3>Mi EPA digital</h3>
+            </div>
+            <nav>
+              <a href="#">Inicio</a>
+              <a href="#">Recursos</a>
+              <a href="#">Mi entorno digital</a>
+              <a href="#">Reflexión final</a>
+            </nav>
+            <button class="secondary-button" id="logout-demo">Cerrar sesión</button>
+          </aside>
+
+          <div class="classroom-main">
+            <div class="classroom-header">
+              <div>
+                <p class="eyebrow">Vista del alumno</p>
+                <h2>Panel beta del EPA digital</h2>
+              </div>
+              <div class="mode-switch" aria-label="Cambiar perfil de ejemplo en la demo">
+                <button class="mode-chip active" data-mode="claro">Perfil claro</button>
+                <button class="mode-chip" data-mode="creativo">Perfil creativo</button>
+                <button class="mode-chip" data-mode="ordenado">Perfil ordenado</button>
+              </div>
+            </div>
+
+            <div class="dashboard-layout modal-dashboard">
+              <article class="summary-card">
+                <div class="summary-topline">
+                  <span class="mini-tag" id="mode-tag">Perfil claro</span>
+                  <span class="signal" id="mode-signal">Uso equilibrado</span>
+                </div>
+                <h3>Así se vería el EPA digital de un estudiante</h3>
+                <p id="mode-description">
+                  Un entorno sencillo, con pocas herramientas, archivos ordenados y criterios básicos de seguridad y bienestar.
+                </p>
+                <div class="metric-row">
+                  <div>
+                    <span>Organización</span>
+                    <strong id="metric-organization">82%</strong>
+                  </div>
+                  <div>
+                    <span>Creación</span>
+                    <strong id="metric-creation">68%</strong>
+                  </div>
+                  <div>
+                    <span>Seguridad</span>
+                    <strong id="metric-safety">79%</strong>
+                  </div>
+                </div>
+              </article>
+
+              <article class="panel-card">
+                <div class="panel-head">
+                  <h3>Herramientas prioritarias</h3>
+                  <span>Selección visual</span>
+                </div>
+                <div class="tool-pills" id="tool-pills"></div>
+              </article>
+
+              <article class="panel-card">
+                <div class="panel-head">
+                  <h3>Archivos y carpetas</h3>
+                  <span>Orden básico</span>
+                </div>
+                <div class="folder-tabs">
+                  <button class="folder-chip active" data-folder="clase">Clase</button>
+                  <button class="folder-chip" data-folder="proyecto">Proyecto</button>
+                  <button class="folder-chip" data-folder="entregas">Entregas</button>
+                </div>
+                <div class="folder-preview" id="folder-preview"></div>
+              </article>
+
+              <article class="panel-card wide-card">
+                <div class="panel-head">
+                  <h3>Recursos guardados</h3>
+                  <span>Filtrar para entender mejor</span>
+                </div>
+                <div class="filter-row">
+                  <button class="filter-chip active" data-filter="todos">Todos</button>
+                  <button class="filter-chip" data-filter="fuente">Fuentes</button>
+                  <button class="filter-chip" data-filter="tutorial">Tutoriales</button>
+                  <button class="filter-chip" data-filter="ejemplo">Ejemplos</button>
+                </div>
+                <div class="resource-grid" id="resource-grid"></div>
+              </article>
+
+              <article class="panel-card">
+                <div class="panel-head">
+                  <h3>Reflexión del alumno</h3>
+                  <span>Meta breve</span>
+                </div>
+                <blockquote id="reflection-text">
+                  Ya sé dónde guardar mis tareas, pero todavía tengo que mejorar cómo nombro archivos y cómo filtro la información.
+                </blockquote>
+              </article>
+
+              <article class="panel-card">
+                <div class="panel-head">
+                  <h3>Seguridad y bienestar</h3>
+                  <span>Checklist</span>
+                </div>
+                <ul class="check-list" id="check-list"></ul>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
 
     <script src="script.js"></script>

@@ -608,3 +608,288 @@ blockquote {
     width: 100%;
   }
 }
+
+.demo-launch-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 18px;
+}
+
+.launch-card,
+.portal-preview {
+  border: 1px solid rgba(217, 220, 228, 0.92);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow);
+}
+
+.launch-card {
+  padding: 24px;
+}
+
+.login-credentials {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0 22px;
+}
+
+.login-credentials div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.login-credentials span,
+.login-help {
+  color: var(--muted);
+}
+
+.portal-preview {
+  padding: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(240,245,255,1) 100%);
+}
+
+.portal-preview-top {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.portal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cfd4de;
+}
+
+.portal-preview-body {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 14px;
+  min-height: 280px;
+}
+
+.portal-preview-sidebar,
+.portal-preview-header,
+.portal-preview-grid span {
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+}
+
+.portal-preview-sidebar {
+  height: 100%;
+}
+
+.portal-preview-content {
+  display: grid;
+  gap: 14px;
+}
+
+.portal-preview-header {
+  height: 68px;
+}
+
+.portal-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.portal-preview-grid span {
+  min-height: 120px;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.modal-shell {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+}
+
+.modal-shell.open {
+  display: block;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 27, 39, 0.48);
+  backdrop-filter: blur(6px);
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  margin: 16px auto;
+  overflow: auto;
+  border-radius: 28px;
+  background: #f4f5f9;
+  box-shadow: 0 30px 60px rgba(20, 27, 39, 0.22);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.classroom-login {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  min-height: 720px;
+}
+
+.classroom-branding,
+.classroom-login-panel {
+  padding: 40px;
+}
+
+.classroom-branding {
+  display: grid;
+  align-content: start;
+  gap: 22px;
+  background: linear-gradient(180deg, #f6f7fb 0%, #eef3ff 100%);
+  border-right: 1px solid var(--line);
+}
+
+.classroom-logo {
+  width: 220px;
+}
+
+.classroom-login-panel {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  background: #ffffff;
+}
+
+.login-form {
+  display: grid;
+  gap: 14px;
+}
+
+.login-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #d6deeb;
+  border-radius: 16px;
+  font: inherit;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(25, 106, 229, 0.12);
+}
+
+.login-error {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.classroom-app {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 760px;
+}
+
+.classroom-sidebar {
+  display: grid;
+  align-content: start;
+  gap: 20px;
+  padding: 24px;
+  background: #f8f9fc;
+  border-right: 1px solid var(--line);
+}
+
+.classroom-sidebar nav {
+  display: grid;
+  gap: 10px;
+}
+
+.classroom-sidebar nav a {
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: var(--text);
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.classroom-main {
+  padding: 24px;
+}
+
+.classroom-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.modal-dashboard {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 1080px) {
+  .demo-launch-layout,
+  .classroom-login,
+  .classroom-app,
+  .portal-preview-body {
+    grid-template-columns: 1fr;
+  }
+
+  .classroom-branding {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 760px) {
+  .portal-preview-grid,
+  .classroom-header {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .modal-dialog {
+    width: calc(100vw - 16px);
+    margin: 8px auto;
+    max-height: calc(100vh - 16px);
+  }
+
+  .classroom-branding,
+  .classroom-login-panel,
+  .classroom-main,
+  .classroom-sidebar,
+  .launch-card,
+  .portal-preview {
+    padding: 20px;
+  }
+}

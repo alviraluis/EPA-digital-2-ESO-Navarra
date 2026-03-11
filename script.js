@@ -9,7 +9,7 @@
     safety: "79%",
     reflection:
       "Ya sé dónde guardar mis tareas, pero todavía tengo que mejorar cómo nombro archivos y cómo filtro la información.",
-    tools: ["Buscador", "Carpetas de clase", "Presentaciones", "Aula virtual", "Notas rápidas"],
+    tools: ["Buscador", "Carpetas de clase", "Presentaciones", "Aula del centro", "Notas rápidas"],
   },
   creativo: {
     tag: "Perfil creativo",
@@ -95,6 +95,22 @@ const checks = [
   "Mantener pausas y un uso equilibrado de pantallas.",
 ];
 
+const modal = document.getElementById("classroom-modal");
+const loginView = document.getElementById("classroom-login-view");
+const appView = document.getElementById("classroom-app-view");
+const loginForm = document.getElementById("classroom-login-form");
+const loginError = document.getElementById("login-error");
+const usernameInput = document.getElementById("demo-username");
+const passwordInput = document.getElementById("demo-password");
+
+function normalizeUser(value) {
+  return value
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
 function setMode(mode) {
   const selected = dashboardModes[mode];
   document.getElementById("mode-tag").textContent = selected.tag;
@@ -177,6 +193,44 @@ function setCanvas(zone) {
   });
 }
 
+function openClassroom() {
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  loginView.hidden = false;
+  appView.hidden = true;
+  loginForm.reset();
+  loginError.hidden = true;
+  usernameInput.focus();
+}
+
+function closeClassroom() {
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+function loginToDemo(event) {
+  event.preventDefault();
+
+  const user = normalizeUser(usernameInput.value);
+  const password = passwordInput.value.trim();
+  const isValidUser = user === "innovacion_bajabapec";
+
+  if (!isValidUser || password !== "12345") {
+    loginError.hidden = false;
+    return;
+  }
+
+  loginError.hidden = true;
+  loginView.hidden = true;
+  appView.hidden = false;
+  setMode("claro");
+  renderFolder("clase");
+  renderResources("todos");
+  renderChecks();
+}
+
 document.querySelectorAll("[data-scroll]").forEach((button) => {
   button.addEventListener("click", () => {
     const target = document.querySelector(button.dataset.scroll);
@@ -202,8 +256,23 @@ document.querySelectorAll(".canvas-chip").forEach((button) => {
   button.addEventListener("click", () => setCanvas(button.dataset.canvas));
 });
 
-setMode("claro");
-renderFolder("clase");
-renderResources("todos");
-renderChecks();
+document.getElementById("open-classroom").addEventListener("click", openClassroom);
+document.getElementById("open-classroom-secondary").addEventListener("click", openClassroom);
+document.querySelectorAll("[data-close-modal]").forEach((button) => {
+  button.addEventListener("click", closeClassroom);
+});
+document.getElementById("logout-demo").addEventListener("click", () => {
+  loginView.hidden = false;
+  appView.hidden = true;
+  loginForm.reset();
+  usernameInput.focus();
+});
+loginForm.addEventListener("submit", loginToDemo);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && modal.classList.contains("open")) {
+    closeClassroom();
+  }
+});
+
 setCanvas("all");
